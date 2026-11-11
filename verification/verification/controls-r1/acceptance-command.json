@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "-s",
+    "-p",
+    "no:cacheprovider",
+    "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\test_acceptance.py",
+    "--basetemp",
+    "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\tmp-acceptance",
+    "--junitxml",
+    "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\acceptance.xml",
+    "--disable-warnings"
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "PYTHONPATH": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src",
+  "python": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+  "exit_code": 0,
+  "seconds": 5.08,
+  "log": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\acceptance.log"
+}

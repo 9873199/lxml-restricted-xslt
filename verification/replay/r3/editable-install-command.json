@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+    "-m",
+    "pip",
+    "install",
+    "--no-build-isolation",
+    "--no-deps",
+    "-e",
+    ".",
+    "--config-settings",
+    "editable_mode=strict"
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "exit_code": 0,
+  "seconds": 132.14
+}

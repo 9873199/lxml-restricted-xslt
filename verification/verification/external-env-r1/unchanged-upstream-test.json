@@ -1,0 +1,7 @@
+{
+  "initial_sha": "ba82d52628e2c519973e82ea4a3fdd36a8579104",
+  "path": "src/lxml/tests/test_external_document.py",
+  "initial_git_blob_content_sha256": "76680cf0a5db6de2767b6db8dc39748593edef3f84c9c729f07f6cf7e7c50104",
+  "frozen_file_sha256": "76680cf0a5db6de2767b6db8dc39748593edef3f84c9c729f07f6cf7e7c50104",
+  "same_source_after_crlf_normalization": true
+}

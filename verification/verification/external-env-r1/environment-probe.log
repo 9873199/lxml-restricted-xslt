@@ -1,0 +1,1 @@
+{"platform": "win32", "find_library_xml2": null, "CDLL_result": "TypeError: LoadLibrary() argument 1 must be str, not None", "upstream_test_suite_count": 0}

@@ -1,0 +1,26 @@
+{
+  "source": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "compiler": {
+    "VSCMD_ARG_HOST_ARCH": "x64",
+    "VSCMD_ARG_TGT_ARCH": "x64",
+    "DISTUTILS_USE_SDK": "1",
+    "MSSdk": "1",
+    "VCToolsInstallDir": "D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\VC\\Tools\\MSVC\\14.44.35207\\",
+    "WindowsSDKVersion": "10.0.26100.0\\",
+    "INCLUDE": "D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\VC\\Tools\\MSVC\\14.44.35207\\include;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\Include\\10.0.26100.0\\shared;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\Include\\10.0.26100.0\\um;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\Include\\10.0.26100.0\\winrt",
+    "LIB": "D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64"
+  },
+  "compiler_path": "D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64;D:\\hc\\userFeedback\\cache\\toolchains\\msvc\\Windows Kits\\10\\bin\\10.0.26100.0\\x64",
+  "extra": {
+    "STATIC_DEPS": "true",
+    "WITH_CYTHON": "true",
+    "LIBICONV_VERSION": "1.19",
+    "LIBXML2_VERSION": "2.11.9",
+    "LIBXSLT_VERSION": "1.1.45",
+    "ZLIB_VERSION": "1.4",
+    "LIBRARY": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\iconv-1.19.win64\\lib;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\libxml2-2.11.9.win64\\lib;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\libxslt-1.1.45.win64\\lib;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\zlib-1.4.win64\\lib",
+    "LXML_STATIC_LIBRARY_DIRS": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\iconv-1.19.win64\\lib;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\libxml2-2.11.9.win64\\lib;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\libxslt-1.1.45.win64\\lib;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\zlib-1.4.win64\\lib",
+    "LXML_STATIC_INCLUDE_DIRS": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\iconv-1.19.win64\\include;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\libxml2-2.11.9.win64\\include;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\libxslt-1.1.45.win64\\include;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\libs\\zlib-1.4.win64\\include"
+  },
+  "pip_config_file": "nul"
+}

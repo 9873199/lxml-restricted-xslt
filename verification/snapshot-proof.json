@@ -1,0 +1,17 @@
+{
+  "time": "2026-11-12T02:16:29+08:00",
+  "repository": "9873199/lxml-restricted-xslt",
+  "visibility": "public",
+  "public_unauthenticated_api_verified": true,
+  "initial_sha": "ba82d52628e2c519973e82ea4a3fdd36a8579104",
+  "final_sha": "3a1c4476ffe0692867fa9909c0acdadbe1a44af7",
+  "initial_url": "https://github.com/9873199/lxml-restricted-xslt/commit/ba82d52628e2c519973e82ea4a3fdd36a8579104",
+  "final_url": "https://github.com/9873199/lxml-restricted-xslt/commit/3a1c4476ffe0692867fa9909c0acdadbe1a44af7",
+  "all_frozen_blob_hashes_verified": true,
+  "initial_is_ancestor": true,
+  "model_commit_chain_preserved": true,
+  "frozen_files": 377,
+  "public_branch": "review-uid120-high-resume-20261111",
+  "automatic_submission": false,
+  "user_review_required": true
+}

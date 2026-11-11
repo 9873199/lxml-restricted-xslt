@@ -1,0 +1,125 @@
+{
+  "time": "2026-11-12T02:32:04+08:00",
+  "uid": 120,
+  "frozen_commit": "3a1c4476ffe0692867fa9909c0acdadbe1a44af7",
+  "native_trajectory_sha256": "f7dfe858f228d8194abb1c9e629964e4a612508a0bfdac835a76ede2879e802f",
+  "private_reasoning_used": false,
+  "requirements": [
+    {
+      "requirement": "library-level restricted callable and documented integration; ordinary XSLT compatible",
+      "result": "verified",
+      "source": "src/lxml/xslt.pxi:910,1105; src/lxml/restricted.py; doc/resolvers.txt",
+      "evidence": "verification/acceptance-r1 and controls-r1; external-env-r1/resolver-docs.log"
+    },
+    {
+      "requirement": "compile include/import and runtime document/entity use a private resource resolver; no default-loader fallback",
+      "result": "verified",
+      "source": "src/lxml/xslt.pxi:887,899,1027",
+      "evidence": "verification/acceptance-r1:26 passed with authorized and denied inputs"
+    },
+    {
+      "requirement": "URI/path/xml:base boundary and readonly resources; actual sentinel and zero TCP connections",
+      "result": "verified for tested inputs",
+      "source": "src/lxml/xslt.pxi:807,836,1003",
+      "evidence": "verification/acceptance-r1; TCP instrumentation selfcheck retained in cache"
+    },
+    {
+      "requirement": "no Python extension exposure and no process-global parser change; XSLTAccessControl respected",
+      "result": "verified",
+      "source": "src/lxml/xslt.pxi:314,323,1003,1024",
+      "evidence": "verification/acceptance-r1, lifecycle-r1 and controls-r1"
+    },
+    {
+      "requirement": "copy lifecycle, failed-instance reuse, resource-set thread isolation and destroyed resolver release",
+      "result": "verified for tested lifetimes",
+      "source": "src/lxml/xslt.pxi:1040,1049; existing _XSLTResolverContext.clear",
+      "evidence": "verification/lifecycle-r1:8 passed; 32 destroyed instances, retained_delta0; controls-r1 copy options"
+    },
+    {
+      "requirement": "tests and regressions, including permitted multilevel import and normal text output",
+      "result": "verified",
+      "evidence": "verification/regression-r1:117 passed plus15 subtests; acceptance-r1:26 passed; resolver-docs OK"
+    }
+  ],
+  "observable_process": [
+    {
+      "lines": [
+        895,
+        896
+      ],
+      "fact": "wider original regression reports 1 failed,401 passed,1 skipped; unchanged external-document test fails in ctypes dynamic-library lookup"
+    },
+    {
+      "lines": [
+        1027,
+        1029
+      ],
+      "fact": "final model XSLT regression reports117 passed and15 subtests passed"
+    },
+    {
+      "lines": [
+        1028,
+        1030
+      ],
+      "fact": "model runs resolvers.txt doctest,1 test OK"
+    },
+    {
+      "lines": [
+        1035,
+        1036
+      ],
+      "fact": "diff check exits0; final changes limited to XSLT implementation/export/test/docs/changelog"
+    },
+    {
+      "lines": [
+        1041
+      ],
+      "fact": "final response lists API, loader boundary and test coverage, discloses wider regression failure and no commit/push"
+    }
+  ],
+  "independent_suites": [
+    {
+      "path": "verification/regression-r1",
+      "passed": 117,
+      "subtests_passed": 15,
+      "failures": 0
+    },
+    {
+      "path": "verification/acceptance-r1",
+      "tests": 26,
+      "passed": 26,
+      "failures": 0
+    },
+    {
+      "path": "verification/lifecycle-r1",
+      "tests": 8,
+      "passed": 8,
+      "failures": 0
+    },
+    {
+      "path": "verification/controls-r1",
+      "tests": 4,
+      "passed": 4,
+      "failures": 0
+    },
+    {
+      "path": "verification/external-env-r1",
+      "kind": "environment diagnostic and documentation run",
+      "observed": "unchanged upstream external-document TestCase fails in setUp; win32 test_suite count0; resolver docs1 test OK"
+    }
+  ],
+  "excluded_engineering_attempts": [
+    {
+      "path": "replay/r1",
+      "reason": "duplicate editable_mode from copied pip.ini and CLI, installation fails after compilation; preserved"
+    },
+    {
+      "path": "replay/r2",
+      "reason": "strict editable deep resource copy exceeds legacy Windows path length; preserved; r3 uses shorter cache path"
+    }
+  ],
+  "unverified": [
+    "The full lxml suite was not independently rerun; the117-case XSLT regression,38 independent checks and executable resolver documentation were run. The original wider401-pass regression retains its external-library setup failure.",
+    "tracemalloc checks Python-tracked resource payload retention for32 instances; it does not establish absence of every possible native-memory leak."
+  ]
+}

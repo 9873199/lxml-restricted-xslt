@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src\\lxml\\tests\\test_external_document.py",
+    "--basetemp",
+    "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\tmp",
+    "--junitxml",
+    "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\upstream.xml"
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "PYTHONPATH": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src",
+  "exit_code": 1,
+  "seconds": 4.62
+}

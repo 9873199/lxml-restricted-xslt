@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "import importlib,json;from pathlib import Path;m=importlib.import_module('lxml.etree');p=Path(m.__file__).resolve();print(json.dumps({\"module\":m.__name__,\"path\":str(p)}));assert p.is_relative_to(Path('D:\\\\hc\\\\userFeedback\\\\cache\\\\native-replays\\\\uid120-r3\\\\source').resolve());assert p.suffix==\".pyd\""
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "exit_code": 0,
+  "seconds": 0.51
+}

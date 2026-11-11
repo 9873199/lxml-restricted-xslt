@@ -1,0 +1,21 @@
+Obtaining file:///D:/hc/userFeedback/cache/native-replays/uid120-r3/source
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: lxml
+  Building editable for lxml (pyproject.toml): started
+  Building editable for lxml (pyproject.toml): still running...
+  Building editable for lxml (pyproject.toml): finished with status 'done'
+  Created wheel for lxml: filename=lxml-7.0.0b1-0.editable-cp314-cp314-win_amd64.whl size=5561 sha256=c67d2705e138f18a5807f677cf1946293a60726e68aae32a3c52f31ded0b8687
+  Stored in directory: D:\hc\userFeedback\cache\tmp\pip-ephem-wheel-cache-wr809y0p\wheels\f6\b4\6d\4b9afed5f8dacc9de5483452647235037b73932ed0b678cbbf
+Successfully built lxml
+Installing collected packages: lxml
+  Attempting uninstall: lxml
+    Found existing installation: lxml 7.0.0b1
+    Uninstalling lxml-7.0.0b1:
+      Successfully uninstalled lxml-7.0.0b1
+Successfully installed lxml-7.0.0b1
+
+[notice] A new release of pip is available: 25.3 -> 26.3
+[notice] To update, run: python.exe -m pip install --upgrade pip

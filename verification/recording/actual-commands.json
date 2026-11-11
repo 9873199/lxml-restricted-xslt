@@ -1,0 +1,86 @@
+[
+  {
+    "id": "check-1",
+    "argv": [
+      "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\test_acceptance.py",
+      "-k",
+      "plain_text or authorized_multilevel or authorized_document_resource",
+      "--basetemp",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\tmp-check-1",
+      "--disable-warnings"
+    ],
+    "exit_code": 0,
+    "finished_at_seconds": 2.6
+  },
+  {
+    "id": "check-2",
+    "argv": [
+      "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\test_acceptance.py",
+      "-k",
+      "unauthorized_network or resource_path_escape or file_resource or xml_base or external_dtd",
+      "--basetemp",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\tmp-check-2",
+      "--disable-warnings"
+    ],
+    "exit_code": 0,
+    "finished_at_seconds": 26.0
+  },
+  {
+    "id": "check-3",
+    "argv": [
+      "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\test_acceptance.py",
+      "-k",
+      "python_extension or exslt or authorized_document_does_not_expand",
+      "--basetemp",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\tmp-check-3",
+      "--disable-warnings"
+    ],
+    "exit_code": 0,
+    "finished_at_seconds": 41.61
+  },
+  {
+    "id": "check-4",
+    "argv": [
+      "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\test_acceptance.py",
+      "-k",
+      "parallel or failure_does_not_taint or ordinary_etree or missing_resource or resource_copies",
+      "--basetemp",
+      "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\tmp-check-4",
+      "--disable-warnings"
+    ],
+    "exit_code": 0,
+    "finished_at_seconds": 58.87
+  }
+]

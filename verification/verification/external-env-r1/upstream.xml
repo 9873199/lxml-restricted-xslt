@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="0.704" timestamp="2026-11-12T02:29:03.601414+08:00" hostname="DESKTOP-BPAMAV8"><testcase classname="src.lxml.tests.test_external_document.ExternalDocumentTestCase" name="test_external_document_adoption" time="0.017"><failure message="TypeError: LoadLibrary() argument 1 must be str, not None">self = &lt;lxml.tests.test_external_document.ExternalDocumentTestCase testMethod=test_external_document_adoption&gt;
+
+    def setUp(self):
+        try:
+            import ctypes
+            from ctypes import pythonapi
+            from ctypes.util import find_library
+        except ImportError:
+            raise unittest.SkipTest("ctypes support missing")
+    
+        def wrap(func, restype, *argtypes):
+            func.restype = restype
+            func.argtypes = list(argtypes)
+            return func
+    
+        self.get_capsule_name = wrap(pythonapi.PyCapsule_GetName,
+                                     ctypes.c_char_p, ctypes.py_object)
+        self.capsule_is_valid = wrap(pythonapi.PyCapsule_IsValid, ctypes.c_int,
+                                     ctypes.py_object, ctypes.c_char_p)
+        self.new_capsule = wrap(pythonapi.PyCapsule_New, ctypes.py_object,
+                                ctypes.c_void_p, ctypes.c_char_p,
+                                ctypes.c_void_p)
+        self.set_capsule_name = wrap(pythonapi.PyCapsule_SetName, ctypes.c_int,
+                                     ctypes.py_object, ctypes.c_char_p)
+        self.set_capsule_context = wrap(pythonapi.PyCapsule_SetContext,
+                                        ctypes.c_int, ctypes.py_object,
+                                        ctypes.c_char_p)
+        self.get_capsule_context = wrap(pythonapi.PyCapsule_GetContext,
+                                        ctypes.c_char_p, ctypes.py_object)
+        self.get_capsule_pointer = wrap(pythonapi.PyCapsule_GetPointer,
+                                        ctypes.c_void_p, ctypes.py_object,
+                                        ctypes.c_char_p)
+        self.set_capsule_pointer = wrap(pythonapi.PyCapsule_SetPointer,
+                                        ctypes.c_int, ctypes.py_object,
+                                        ctypes.c_void_p)
+        self.set_capsule_destructor = wrap(pythonapi.PyCapsule_SetDestructor,
+                                           ctypes.c_int, ctypes.py_object,
+                                           ctypes.c_void_p)
+        self.PyCapsule_Destructor = ctypes.CFUNCTYPE(None, ctypes.py_object)
+&gt;       libxml2 = ctypes.CDLL(find_library('xml2'))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+src\lxml\tests\test_external_document.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\ctypes\__init__.py:433: in __init__
+    self._handle = self._load_library(name, mode, handle, winmode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;CDLL 'None', handle 0 at 0x1fd2c761a90&gt;, name = None, mode = 0
+handle = None, winmode = 4096
+
+    def _load_library(self, name, mode, handle, winmode):
+        if winmode is None:
+            import nt as _nt
+            winmode = _nt._LOAD_LIBRARY_SEARCH_DEFAULT_DIRS
+            # WINAPI LoadLibrary searches for a DLL if the given name
+            # is not fully qualified with an explicit drive. For POSIX
+            # compatibility, and because the DLL search path no longer
+            # contains the working directory, begin by fully resolving
+            # any name that contains a path separator.
+            if name is not None and ('/' in name or '\\' in name):
+                name = _nt._getfullpathname(name)
+                winmode |= _nt._LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR
+        self._name = name
+        if handle is not None:
+            return handle
+&gt;       return _LoadLibrary(self._name, winmode)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: LoadLibrary() argument 1 must be str, not None
+
+C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\ctypes\__init__.py:451: TypeError</failure></testcase><testcase classname="src.lxml.tests.test_external_document" name="test_suite" time="0.001" /></testsuite></testsuites>

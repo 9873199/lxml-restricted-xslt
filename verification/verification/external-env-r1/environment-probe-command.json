@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+    "-B",
+    "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\probe_environment.py"
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "PYTHONPATH": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source;D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src",
+  "exit_code": 0,
+  "seconds": 4.69
+}

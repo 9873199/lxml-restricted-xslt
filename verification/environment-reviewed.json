@@ -1,0 +1,27 @@
+{
+  "time": "2026-11-12T02:32:04+08:00",
+  "container_used": false,
+  "python": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+  "dependencies": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "module_paths": {
+      "lxml": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src\\lxml\\__init__.py",
+      "lxml.etree": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src\\lxml\\etree.cp314-win_amd64.pyd",
+      "lxml.restricted": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source\\src\\lxml\\restricted.py"
+    },
+    "packages": {
+      "lxml": "7.0.0b1",
+      "Cython": "3.3.1",
+      "setuptools": "84.2.1",
+      "pytest": "9.2.0"
+    }
+  },
+  "external_dependencies": [
+    "Native Windows Python 3.14 and cache-local MSVC/Windows SDK, no container",
+    "Cython rebuild against static iconv1.19/libxml2 2.11.9/libxslt1.1.45/zlib1.4 archives; hashes and effective versions in replay/r3/static-dependencies.json",
+    "Independent network fixtures bind only ephemeral loopback TCP ports; no external XSLT service",
+    "The unchanged upstream external-document adoption test requires a discoverable dynamic libxml2, absent in this Windows static build"
+  ],
+  "module_import_verified": true
+}

@@ -1,0 +1,71 @@
+{
+  "time": "2026-11-12T02:30:20+08:00",
+  "archives": [
+    {
+      "name": "iconv-1.19.win64.zip",
+      "bytes": 971551,
+      "sha256": "bdc6c06451d6916c5a6d42e1edbfd307ca1f27b0d770d876bb5d55c8acbf5735"
+    },
+    {
+      "name": "libxml2-2.11.9.win64.zip",
+      "bytes": 3457777,
+      "sha256": "60b14919da11f94fb13f7ebc4b96e8cff97d03e86ae3caacbbcc54a1d35c128f"
+    },
+    {
+      "name": "libxslt-1.1.45.win64.zip",
+      "bytes": 461024,
+      "sha256": "3117c7b195b2fb61d704aa2d6f32ec6b4b6d2ebc50acafe1d22a4f5565031285"
+    },
+    {
+      "name": "zlib-1.4.win64.zip",
+      "bytes": 211957,
+      "sha256": "bfcc073a2a6588fed49ab2e629b97c0af213ff251ee1970446e18417bd2d0273"
+    }
+  ],
+  "same_archive_bytes_as_declared_task_environment": true,
+  "versions": {
+    "LXML_VERSION": [
+      7,
+      0,
+      0,
+      -99
+    ],
+    "LIBXML_VERSION": [
+      2,
+      11,
+      9
+    ],
+    "LIBXML_COMPILED_VERSION": [
+      2,
+      11,
+      9
+    ],
+    "LIBXSLT_VERSION": [
+      1,
+      1,
+      45
+    ],
+    "LIBXSLT_COMPILED_VERSION": [
+      1,
+      1,
+      45
+    ]
+  },
+  "compiler_config": "build-config.json",
+  "pip_config_disabled_for_replay": true,
+  "editable_mode_passed_once_on_cli": true,
+  "module_import": "import-source.log",
+  "environment_initial_baseline": {
+    "status": "ENV_READY",
+    "id": "uf-20261111-sec-06-xslt-sandbox",
+    "python": "D:\\hc\\userFeedback\\cache\\envs\\uf-20261111-sec-06-xslt-sandbox\\Scripts\\python.exe",
+    "baseline_exit_code": 0,
+    "git_clean": true,
+    "evidence": "D:\\hc\\userFeedback\\cache\\execution-security-high-20261111\\environment-repair\\120\\build-r5\\baseline.log",
+    "repair_directory": "D:\\hc\\userFeedback\\cache\\execution-security-high-20261111\\environment-repair\\120\\build-r5",
+    "source_correctness_edits": false,
+    "compiled_import_evidence": "D:\\hc\\userFeedback\\cache\\execution-security-high-20261111\\environment-repair\\120\\build-r5\\import-source.log",
+    "editable_strategy": "setuptools strict, task-local pip.ini",
+    "pip_configuration_evidence": "D:\\hc\\userFeedback\\cache\\execution-security-high-20261111\\environment-repair\\120\\task-local-pip-configuration.json"
+  }
+}

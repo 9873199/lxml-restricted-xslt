@@ -1,0 +1,268 @@
+{
+  "time": "2026-11-12T02:32:04+08:00",
+  "reviewed": true,
+  "frozen_commit": "3a1c4476ffe0692867fa9909c0acdadbe1a44af7",
+  "files": [
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\Feedback.md",
+      "path": "Feedback.md",
+      "sha256": "ce376f0f9a9a07b9fb6a202a4e0c0efd99a27a30f3be7e02ae88d4dd2953e76a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\evidence-map.json",
+      "path": "evidence-map.json",
+      "sha256": "b0cfd6b198509088eaa2b12e3552d242f108d86ae80a666a5e6d988690181806"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\environment-reviewed.json",
+      "path": "environment-reviewed.json",
+      "sha256": "3d6d082e9027eb707d393d933b0e7a7d4ca28f9a0689383fc9b199aa55bc4adb"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\freeze-audit.json",
+      "path": "freeze-audit.json",
+      "sha256": "7087dae12a08ce799dad65d583269a975ea670f36e5b775b6583d49c0f50e9c4"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\snapshot-proof.json",
+      "path": "snapshot-proof.json",
+      "sha256": "9d097edbc752c1c72db5defa55e24e07a2ca73a0444feb38dba7017f66628b9c"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\regression-r1\\regression-command.json",
+      "path": "verification/regression-r1/regression-command.json",
+      "sha256": "49ea57e2861b3adc809ca6242ccd3f6dc9ffab3a56d1de321e19646653dfe450"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\regression-r1\\regression.log",
+      "path": "verification/regression-r1/regression.log",
+      "sha256": "2de9fd9ac89c643f998d5c8e8190cb9d93c9eee24d2599c493f5b11546b2bba9"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\regression-r1\\regression.xml",
+      "path": "verification/regression-r1/regression.xml",
+      "sha256": "3118ba9a8e64fdc30cf78382befe5cb0a2bae3ea417b984cf91a6553ca077dc9"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\regression-r1\\test-results.json",
+      "path": "verification/regression-r1/test-results.json",
+      "sha256": "e277663e520ac9db0b76bc50f8b1dbad74061dabb83db6a96fa915f0a2bf7e32"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\acceptance-command.json",
+      "path": "verification/acceptance-r1/acceptance-command.json",
+      "sha256": "633d6515b5fca6a01ef37aa2b078cef738b55dec8aecd34edd8d573632766740"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\acceptance-support.json",
+      "path": "verification/acceptance-r1/acceptance-support.json",
+      "sha256": "97c696f696f48a2603700b1834a222e0d1edd292195e4743daa9d01c0147caf6"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\acceptance.log",
+      "path": "verification/acceptance-r1/acceptance.log",
+      "sha256": "3f83f0ae6605a9d1c849fb7c48fc607e81840aa51165403fc9c6577052c07060"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\acceptance.xml",
+      "path": "verification/acceptance-r1/acceptance.xml",
+      "sha256": "e54042444fe91687794d278e59a6d24bd8b1cd868ed47de8ecfcf1c29626032d"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\acceptance_adapter.py",
+      "path": "verification/acceptance-r1/acceptance_adapter.py",
+      "sha256": "66f5bf7cfe694f64e51c72ef349a5af745c17c829efb971f7e3e80abe2f2d711"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\test-results.json",
+      "path": "verification/acceptance-r1/test-results.json",
+      "sha256": "f4b0279b7e9a895cdddfe751b2d71fd6acc278f4974dd8449eb567f18b6e908f"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\acceptance-r1\\test_acceptance.py",
+      "path": "verification/acceptance-r1/test_acceptance.py",
+      "sha256": "a334f9c46cadab62d46753a1e118f8ca7a5fcc975b4ac640beb23ef1cac33fc2"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\acceptance-command.json",
+      "path": "verification/lifecycle-r1/acceptance-command.json",
+      "sha256": "cf7fcaf4b4685de7bcf591c2aecd6b27bb562379e29906a9d15deb6f27fdba7e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\acceptance-support.json",
+      "path": "verification/lifecycle-r1/acceptance-support.json",
+      "sha256": "97c696f696f48a2603700b1834a222e0d1edd292195e4743daa9d01c0147caf6"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\acceptance.log",
+      "path": "verification/lifecycle-r1/acceptance.log",
+      "sha256": "c78feeb7c92eb1e04777b01842c42cc8445d3f9393aea24e414accb677a7f112"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\acceptance.xml",
+      "path": "verification/lifecycle-r1/acceptance.xml",
+      "sha256": "732448613dec23488d6689a82d2a22186a6cf49a9dbc636fed43b679e8fd746a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\acceptance_adapter.py",
+      "path": "verification/lifecycle-r1/acceptance_adapter.py",
+      "sha256": "66f5bf7cfe694f64e51c72ef349a5af745c17c829efb971f7e3e80abe2f2d711"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\test-results.json",
+      "path": "verification/lifecycle-r1/test-results.json",
+      "sha256": "604442353e67d3cd30bd8e915ee384a671c7233689f6b055287919d0226d9aee"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\lifecycle-r1\\test_acceptance.py",
+      "path": "verification/lifecycle-r1/test_acceptance.py",
+      "sha256": "25acb02b6dc114325ed48b08fe803f8506577352d8eec625be202ed9d824302e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\acceptance-command.json",
+      "path": "verification/controls-r1/acceptance-command.json",
+      "sha256": "3a4fcf0c497337b05ddfea975342a199183b475d5646c2a848afe1de0e8cde43"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\acceptance.log",
+      "path": "verification/controls-r1/acceptance.log",
+      "sha256": "1e15dff50cd6c8fc7f42168ce49cbfa599d04bd392521ff36d4baa81305fd312"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\acceptance.xml",
+      "path": "verification/controls-r1/acceptance.xml",
+      "sha256": "9140058566facf339193876ac2db01ec5673e4bcb02069e253801233d9d9c77f"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\test-results.json",
+      "path": "verification/controls-r1/test-results.json",
+      "sha256": "e10af1338e7e0d56ee117dcb0d0b100be4a334da1076eea8ed619d1b9fb74c77"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\controls-r1\\test_acceptance.py",
+      "path": "verification/controls-r1/test_acceptance.py",
+      "sha256": "c3a4d08cffc057fba6487f8856ebffe9bb71be0539c4ac8afef47b5e85d8d04e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\check_resolver_docs.py",
+      "path": "verification/external-env-r1/check_resolver_docs.py",
+      "sha256": "427fa2ba3bbd1a6193388ca2b56eeff39dfa1173239eb15c911ed88e90b89120"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\environment-probe-command.json",
+      "path": "verification/external-env-r1/environment-probe-command.json",
+      "sha256": "1cfeead5333d433e7b5d8e66d79bd8d6d86e52fb88a092175f72e9480291a216"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\environment-probe.log",
+      "path": "verification/external-env-r1/environment-probe.log",
+      "sha256": "76cb44c60694ddc2fb5d691e5236013706932096b5f0669d4bf68d3ed3322a53"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\probe_environment.py",
+      "path": "verification/external-env-r1/probe_environment.py",
+      "sha256": "ab0698092ca75dffa78bce2f4de06af75801ca929dab3be1b95b6e575874fb09"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\resolver-docs-command.json",
+      "path": "verification/external-env-r1/resolver-docs-command.json",
+      "sha256": "d2be4875586586b106f927330a466ed667094a5a676dc246526c499dca1d0604"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\resolver-docs.log",
+      "path": "verification/external-env-r1/resolver-docs.log",
+      "sha256": "85a0f7f29486224014f00bf0e194f82b3adc9dba878ae2332d90b79957c8f82c"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\unchanged-upstream-test.json",
+      "path": "verification/external-env-r1/unchanged-upstream-test.json",
+      "sha256": "14e6f1c5e1b147750fc160a1db8ae85ac4b0e77b01f246bb5075a77b3f0a5848"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\upstream-external-test-command.json",
+      "path": "verification/external-env-r1/upstream-external-test-command.json",
+      "sha256": "10348ed20d8c65c4f762f3a61ece6392e917634f825da799eee22378d8ea5a8e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\upstream-external-test.log",
+      "path": "verification/external-env-r1/upstream-external-test.log",
+      "sha256": "7675c0952edc802bb9de3564ac03c4f888e7a1cac427a43cf667a3c66d88088b"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\verification\\external-env-r1\\upstream.xml",
+      "path": "verification/external-env-r1/upstream.xml",
+      "sha256": "2041ad21bf45404445d0d7f536e2520cb8ceb4c1106d976461b83a96638b18be"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\build-config.json",
+      "path": "replay/r3/build-config.json",
+      "sha256": "6487a475e407ea57cd80bd2ef893fc457a5d5053c782bc3e8f7e69ee3cc3f71c"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\editable-install-command.json",
+      "path": "replay/r3/editable-install-command.json",
+      "sha256": "6419b1e2e57c40aa23c74b46a68edfdcf5b7f813738b8e7149e432a63280673d"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\editable-install.log",
+      "path": "replay/r3/editable-install.log",
+      "sha256": "706e0e83ee65640a309864ee3a83241f6001d14fe96cd9fd73e7361f8ec3d957"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\import-source-command.json",
+      "path": "replay/r3/import-source-command.json",
+      "sha256": "8ee6980ea96379824791f750217e4504c7000f6cf3b195d8d51289ebdb1163be"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\import-source.log",
+      "path": "replay/r3/import-source.log",
+      "sha256": "cf0b44b61b0b8a26694f86e360e831ab6cd8f53e9505510a7f07e4c25b0fc345"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\replay-proof.json",
+      "path": "replay/r3/replay-proof.json",
+      "sha256": "ea3626d5d8470b5b4a887f761dc28f0226b6fd4c01f1c0a875eb4c8d8d21c500"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3\\static-dependencies.json",
+      "path": "replay/r3/static-dependencies.json",
+      "sha256": "0b0072721b208cf2fb1a6e472d6df9fa6bcd8c7ac4f2011fba56539029430739"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\actual-commands.json",
+      "path": "recording/actual-commands.json",
+      "sha256": "15070717dcab5e870ea95fba79fff57f15066864975039688af31218213a113e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\content-review.json",
+      "path": "recording/content-review.json",
+      "sha256": "13bfb6c137e4ccd948337e24986fccec0028ba6274d0b91f67c27c150144609f"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\recording-status.json",
+      "path": "recording/recording-status.json",
+      "sha256": "101fcc742d48ba0fe22d07bd6972375f5855fa25fb5f5fa46094050862e6c6a6"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\full-stream-check.json",
+      "path": "recording/full-stream-check.json",
+      "sha256": "096707ea06341b40a5a7c2f9bbf1ab9307d11b8860c7227266bc3667fdb4a37c"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\recording\\r1\\media-metadata.log",
+      "path": "recording/media-metadata.log",
+      "sha256": "856221b6c6c867916f9100e3fc19fbddfb000963d4d2d9810c768744dee360f1"
+    }
+  ],
+  "reproduction_readme": "独立验收说明\n\n冻结提交：https://github.com/9873199/lxml-restricted-xslt/commit/3a1c4476ffe0692867fa9909c0acdadbe1a44af7\n实际解释器：3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]\n\n先检出冻结提交，使用environment-reviewed.json中的真实Python和依赖。按replay/r3/build-config.json准备Windows MSVC/SDK和static-dependencies.json列明的静态依赖包；在较短的缓存目录重编译，PIP_CONFIG_FILE=NUL，命令行只传一次editable_mode=strict。import-source.log显示独立源码生成的.pyd实际路径，replay-proof.json证明源码字节未变。按各verification目录的*-command.json执行；acceptance_adapter.py只映射公开API，不补安全逻辑。相关回归117项和15子测试不与独立38项相加冒充原轨成绩。external-env-r1保留未修改上游测试、动态库探针、真实失败和文档示例结果；Windows静态构建未满足该外部动态libxml2测试前提，不忽略或伪写全过。所有临时文件、XML、日志、构建及本机服务夹具都放缓存；无需容器、远程服务或外部证书。\n\n每组目录内的 *-command.json 保留真实参数、工作目录、PYTHONPATH、退出码和原始日志位置；test-results.json 与 JUnit XML 保留完整成绩。跨机器运行时把这些绝对路径映射到同一冻结 checkout 和自己的缓存目录，所有 --basetemp、XML 和构建输出均放在缓存里。依赖版本见 environment-reviewed.json。\n这些材料在模型单轮结束后生成，与原轨内测试分开，不代表项目方质检通过。原轨和视频只放各自的飞书附件。\n",
+  "excluded_engineering_attempts": [
+    {
+      "path": "replay/r1",
+      "reason": "duplicate editable_mode from copied pip.ini and CLI, installation fails after compilation; preserved"
+    },
+    {
+      "path": "replay/r2",
+      "reason": "strict editable deep resource copy exceeds legacy Windows path length; preserved; r3 uses shorter cache path"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "time": "2026-11-12T02:29:02+08:00",
+  "run_id": "uf-20261111-sec-06-xslt-sandbox",
+  "checks": {
+    "acceptance": {
+      "tests": 8,
+      "passed": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "failure_cases": [],
+      "exit_code": 0,
+      "xfailed": 0,
+      "xpassed": 0,
+      "pytest_terminal_summary": {
+        "passed": 8
+      },
+      "junit_raw_counts": {
+        "tests": 8,
+        "passed": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "failure_cases": [],
+        "exit_code": 0
+      },
+      "count_source": "pytest terminal summary; XML kept unchanged"
+    }
+  },
+  "artifact_hashes_unchanged": true,
+  "score": null,
+  "feedback": "PENDING_SEMANTIC_REVIEW"
+}

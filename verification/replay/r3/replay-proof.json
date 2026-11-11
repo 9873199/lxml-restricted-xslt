@@ -1,0 +1,13 @@
+{
+  "uid": 120,
+  "run_id": "uf-20261111-sec-06-xslt-sandbox",
+  "original_artifact": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\frozen-artifact",
+  "replay_artifact": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\source",
+  "python": "D:\\hc\\userFeedback\\cache\\native-replays\\uid120-r3\\venv\\Scripts\\python.exe",
+  "frozen_sources_match": true,
+  "native_module": "lxml.etree",
+  "module_import_verified": true,
+  "declared_submodules": [],
+  "rebuild_directory": "D:\\hc\\userFeedback\\cache\\execution-security-high-resume-20261111\\evaluation\\uf-20261111-sec-06-xslt-sandbox\\replay\\r3",
+  "created": "2026-11-12T02:28:21+08:00"
+}
