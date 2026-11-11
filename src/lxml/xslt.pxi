@@ -1,4 +1,7 @@
 # XSLT
+import os
+import posixpath
+
 from lxml.includes cimport xslt
 
 
@@ -280,9 +283,11 @@ cdef class _XSLTContext(_BaseContext):
     cdef xslt.xsltTransformContext* _xsltCtxt
     cdef _ReadOnlyElementProxy _extension_element_proxy
     cdef dict _extension_elements
+    cdef bint _restricted
 
     def __cinit__(self):
         self._extension_elements = EMPTY_DICT
+        self._restricted = 0
 
     def __init__(self, namespaces, extensions, error_log, enable_regexp,
                  build_smart_strings):
@@ -306,6 +311,7 @@ cdef class _XSLTContext(_BaseContext):
         cdef _XSLTContext context
         context = <_XSLTContext>_BaseContext._copy(self)
         context._extension_elements = self._extension_elements
+        context._restricted = self._restricted
         return context
 
     cdef register_context(self, xslt.xsltTransformContext* xsltCtxt,
@@ -314,7 +320,10 @@ cdef class _XSLTContext(_BaseContext):
         self._set_xpath_context(xsltCtxt.xpathCtxt)
         self._register_context(doc)
         self.registerLocalFunctions(xsltCtxt, _register_xslt_function)
-        self.registerGlobalFunctions(xsltCtxt, _register_xslt_function)
+        if not self._restricted:
+            # Restricted transformations do not expose process-wide Python
+            # extension functions registered through FunctionNamespace.
+            self.registerGlobalFunctions(xsltCtxt, _register_xslt_function)
         if self._extension_elements is not EMPTY_DICT:
             _registerXSLTExtensions(xsltCtxt, self._extension_elements)
 
@@ -755,6 +764,360 @@ cdef XSLT _copyXSLT(XSLT stylesheet):
         raise MemoryError()
 
     return new_xslt
+
+
+################################################################################
+# Restricted XSLT transformations
+#
+# A restricted transformation only ever sees the stylesheet and XML resources
+# that the caller explicitly hands over.  Everything is served from memory by
+# a private resolver: xsl:include/xsl:import while compiling the stylesheet,
+# document() while transforming, and external entities in the caller supplied
+# XML.  Resolver misses are errors, so libxml2/libxslt never get a chance to
+# fall back to their default file or network loaders.
+
+class RestrictedXSLTError(XSLTError):
+    """Base class of errors raised by restricted XSLT transformations.
+    """
+
+class RestrictedResourceError(RestrictedXSLTError):
+    """Raised when a restricted transformation asks for a resource that is
+    not part of the authorized resource set.
+
+    The requested URI is available as the ``uri`` attribute.
+    """
+    def __init__(self, uri, reason=None):
+        self.uri = uri
+        if reason:
+            message = "Restricted XSLT resource access denied: %s (%s)" % (uri, reason)
+        else:
+            message = "Restricted XSLT resource access denied: %s" % (uri,)
+        RestrictedXSLTError.__init__(self, message)
+
+
+# The virtual namespace that all authorized resources live in.  It cannot
+# collide with real file or network URLs, and libxml2 handles it as an
+# ordinary absolute URI when resolving relative references.
+_RESTRICTED_URI_ROOT = "lxml-restricted://root/"
+
+# Matches any absolute URI scheme, including Windows drive letters.
+_RESTRICTED_URI_SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
+
+
+def _restricted_resource_name(name, what="resource name"):
+    """Validate and normalize an authorized resource name.
+
+    Resource names are relative, POSIX-style paths inside the virtual
+    resource root.  Absolute paths, Windows/UNC paths, URI schemes and
+    percent-encoded names are rejected outright.
+    """
+    if isinstance(name, os.PathLike):
+        name = os.fspath(name)
+    if not isinstance(name, str):
+        raise TypeError("%s must be a string, got %r" % (what, type(name).__name__))
+    if not name or name != name.strip():
+        raise ValueError("invalid %s: %r" % (what, name))
+    for char in ('\x00', '\\', '%', '#', '?'):
+        if char in name:
+            raise ValueError("invalid %s: %r" % (what, name))
+    if any(ord(char) < 0x20 for char in name):
+        raise ValueError("invalid %s: %r" % (what, name))
+    if ':' in name or name.startswith('/'):
+        raise ValueError("%s must be a relative path: %r" % (what, name))
+    if '..' in name.split('/'):
+        raise ValueError("%s must not contain '..': %r" % (what, name))
+    normalized = posixpath.normpath(name)
+    if not normalized or normalized == '.' or normalized == '..' \
+            or normalized.startswith('../') or normalized.startswith('/'):
+        raise ValueError("%s escapes the resource root: %r" % (what, name))
+    return normalized
+
+
+def _restricted_uri_name(uri):
+    """Map a URI as requested by libxslt to an authorized resource name.
+
+    Only relative references and URIs inside the private virtual root are
+    accepted.  Everything else is rejected before it can reach a loader.
+    """
+    if uri is None:
+        raise RestrictedResourceError(uri, "missing URI")
+    if isinstance(uri, bytes):
+        try:
+            uri = uri.decode('utf-8')
+        except UnicodeDecodeError:
+            raise RestrictedResourceError(uri, "invalid URI encoding")
+    elif not isinstance(uri, str):
+        raise RestrictedResourceError(uri, "invalid URI type")
+
+    # Fragments identify nodes inside a document and are not part of the
+    # resource name.  libxslt usually strips them before calling us.
+    uri = uri.split('#', 1)[0]
+
+    if not uri:
+        raise RestrictedResourceError(uri, "empty URI")
+    if '?' in uri:
+        raise RestrictedResourceError(uri, "query strings are not supported")
+
+    if uri.startswith(_RESTRICTED_URI_ROOT):
+        name = uri[len(_RESTRICTED_URI_ROOT):]
+    else:
+        if _RESTRICTED_URI_SCHEME_RE.match(uri):
+            raise RestrictedResourceError(uri, "absolute or unsupported URI")
+        if uri.startswith('/') or uri.startswith('\\'):
+            raise RestrictedResourceError(uri, "absolute or UNC path")
+        name = uri
+
+    # These checks also catch schemes that libxml2 may have hidden behind
+    # a relative looking path.
+    for char in ('\x00', '\\', '%'):
+        if char in name:
+            raise RestrictedResourceError(uri, "invalid URI")
+    if any(ord(char) < 0x20 for char in name):
+        raise RestrictedResourceError(uri, "invalid URI")
+    if ':' in name or name.startswith('/'):
+        raise RestrictedResourceError(uri, "absolute or unsupported URI")
+
+    normalized = posixpath.normpath(name)
+    if not normalized or normalized == '.' or normalized == '..' \
+            or normalized.startswith('../') or normalized.startswith('/'):
+        raise RestrictedResourceError(uri, "URI escapes the resource root")
+    return normalized
+
+
+cdef class _RestrictedResolver(Resolver):
+    """A resolver that serves resources from an in-memory, read-only map.
+
+    A missing resource raises instead of returning ``None``.  Raising keeps
+    both the libxml2 resource loader and the libxslt document loader from
+    calling their default loader as a fallback.
+    """
+    cdef dict _resources
+
+    def __cinit__(self, dict resources):
+        self._resources = resources
+
+    def resolve(self, system_url, public_id, context):
+        name = _restricted_uri_name(system_url)
+        try:
+            data = self._resources[name]
+        except KeyError:
+            raise RestrictedResourceError(
+                system_url, "resource is not in the authorized set")
+        return self.resolve_string(
+            data, context, base_url=_RESTRICTED_URI_ROOT + name)
+
+
+cdef class RestrictedXSLT:
+    """RestrictedXSLT(self, stylesheet, resources, *, base_url="main.xsl", input_base_url="input.xml", access_control=None)
+
+    An XSLT transformation that can only read the stylesheet and the
+    explicitly authorized, read-only resources.
+
+    ``stylesheet`` is the XSLT document as bytes, text, or an Element/ElementTree.
+    ``resources`` is a mapping of relative resource names to XML/byte content.
+    A resource value may also be an explicitly authorized file path
+    (``os.PathLike``) or a file-like object; it is read once when the
+    transformation is created, so the transformation itself performs no I/O.
+    The same resource set is used for xsl:include/xsl:import at compile time,
+    for document() at transformation time, and for external entities in the
+    supplied XML input.
+
+    Relative references between resources are supported.  Names must stay
+    inside the resource root: absolute paths, ``file:`` URIs, UNC paths,
+    percent-encoded names, and xml:base rewrites that leave the root are
+    rejected with `RestrictedResourceError`.  A URI that does not match an
+    authorized resource is an error; it is never handed to a default loader.
+
+    The transformation does not accept Python extension functions or
+    extension elements, and it does not change process-wide parser or loader
+    settings.  Writes are always denied; reads are satisfied from memory only.
+
+    ``base_url`` is the logical name of the stylesheet and the base for its
+    relative include/import/document() references.  ``input_base_url`` is the
+    logical base URL of the XML input.  Both are relative names inside the
+    same resource root.
+    """
+    cdef XSLT _xslt
+    cdef dict _resources
+    cdef str _base_url
+    cdef str _input_base_url
+    cdef object __weakref__
+
+    def __cinit__(self):
+        self._xslt = None
+        self._resources = None
+        self._base_url = None
+        self._input_base_url = None
+
+    def __init__(self, stylesheet, resources, *, base_url="main.xsl",
+                 input_base_url="input.xml", access_control=None):
+        cdef dict frozen_resources = {}
+        cdef object name
+
+        if resources is None:
+            raise TypeError("resources must be a mapping of names to content")
+        try:
+            items = dict(resources).items()
+        except (TypeError, ValueError):
+            raise TypeError("resources must be a mapping of names to content")
+
+        for name, data in items:
+            name = _restricted_resource_name(name)
+            if name in frozen_resources:
+                raise ValueError("duplicate resource name: %r" % (name,))
+            if isinstance(data, os.PathLike):
+                # Explicitly authorized file: read the snapshot now, so the
+                # transformation itself still performs no file I/O.
+                with open(os.fspath(data), 'rb') as resource_file:
+                    data = resource_file.read()
+            elif isinstance(data, str):
+                pass
+            elif isinstance(data, (bytes, bytearray, memoryview)):
+                data = bytes(data)
+            elif isinstance(data, (_Element, _ElementTree)):
+                data = tostring(data)
+            else:
+                read = getattr(data, 'read', None)
+                if read is None:
+                    raise TypeError(
+                        "resource content must be bytes, text or a file-like object: %r"
+                        % (name,))
+                data = read()
+                if isinstance(data, (bytearray, memoryview)):
+                    data = bytes(data)
+                elif not isinstance(data, (bytes, str)):
+                    raise TypeError(
+                        "resource content must be bytes or text: %r" % (name,))
+            frozen_resources[name] = data
+
+        self._resources = frozen_resources
+        self._base_url = _RESTRICTED_URI_ROOT + _restricted_resource_name(
+            base_url, "base_url")
+        self._input_base_url = _RESTRICTED_URI_ROOT + _restricted_resource_name(
+            input_base_url, "input_base_url")
+
+        # Reads are always served from the private resolver.  Only write
+        # access is relevant for the libxslt security layer, and it is
+        # always denied.  If the caller supplies access control, its read
+        # flags can restrict or allow the in-memory document() lookups.
+        if access_control is None:
+            read_file = read_network = True
+        else:
+            if not isinstance(access_control, XSLTAccessControl):
+                raise TypeError("access_control must be an XSLTAccessControl instance")
+            options = access_control.options
+            read_file = options['read_file']
+            read_network = options['read_network']
+        effective_access_control = XSLTAccessControl(
+            read_file=read_file, write_file=False, create_dir=False,
+            read_network=read_network, write_network=False)
+
+        parser = self._make_parser()
+        stylesheet_doc = fromstring(
+            _restricted_input_data(stylesheet, "stylesheet"),
+            parser, base_url=self._base_url)
+        self._xslt = XSLT(
+            stylesheet_doc, access_control=effective_access_control, regexp=False)
+        # Do not register process-wide Python extension functions in this
+        # transformation context, and do not enable Python-backed EXSLT
+        # regular expressions.
+        self._xslt._context._restricted = 1
+
+    cdef _make_parser(self):
+        parser = XMLParser(
+            no_network=True, load_dtd=True, resolve_entities=True,
+            recover=False, huge_tree=False)
+        parser.resolvers.add(_RestrictedResolver(self._resources))
+        return parser
+
+    def __call__(self, _input, *, profile_run=False, **kw):
+        """__call__(self, input, profile_run=False, **kw)
+
+        Transform the given XML input.  The input is parsed with the same
+        restricted resolver, so external entities cannot reach files or the
+        network.  Additional keyword arguments are passed to the stylesheet
+        as parameters.
+        """
+        if self._xslt is None:
+            raise RuntimeError("RestrictedXSLT is not initialized")
+        parser = self._make_parser()
+        input_doc = fromstring(
+            _restricted_input_data(_input, "input"),
+            parser, base_url=self._input_base_url)
+        return self._xslt(input_doc, profile_run=profile_run, **kw)
+
+    def __copy__(self):
+        cdef RestrictedXSLT new_xslt
+        if self._xslt is None:
+            raise RuntimeError("RestrictedXSLT is not initialized")
+        new_xslt = RestrictedXSLT.__new__(RestrictedXSLT)
+        new_xslt._xslt = self._xslt.__copy__()
+        # The resource map is frozen at construction time and never mutated.
+        new_xslt._resources = self._resources
+        new_xslt._base_url = self._base_url
+        new_xslt._input_base_url = self._input_base_url
+        return new_xslt
+
+    def __deepcopy__(self, memo):
+        return self.__copy__()
+
+    @property
+    def error_log(self):
+        """The log of errors and warnings of the last transformation."""
+        return self._xslt.error_log
+
+    @property
+    def access_control(self):
+        """The effective XSLTAccessControl used by the transformation."""
+        return self._xslt._access_control
+
+    def __repr__(self):
+        return "%s(base_url=%r, resources=%r)" % (
+            python._typename(self), self._base_url,
+            sorted(self._resources))
+
+
+def _restricted_input_data(value, what):
+    """Turn user supplied XML into something ``fromstring()`` can parse."""
+    if isinstance(value, os.PathLike):
+        with open(os.fspath(value), 'rb') as input_file:
+            return input_file.read()
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (bytes, bytearray, memoryview)):
+        return bytes(value)
+    read = getattr(value, 'read', None)
+    if read is not None:
+        data = read()
+        if isinstance(data, (bytearray, memoryview)):
+            return bytes(data)
+        if isinstance(data, (bytes, str)):
+            return data
+        raise TypeError("%s must be XML bytes or text" % (what,))
+    if isinstance(value, (_Element, _ElementTree)):
+        return tostring(value)
+    raise TypeError(
+        "%s must be XML bytes, text, an Element/ElementTree or a file-like object"
+        % (what,))
+
+
+def restricted_xslt_transform(stylesheet, input, resources, *,
+                              base_url="main.xsl", input_base_url="input.xml",
+                              access_control=None, profile_run=False, **params):
+    """restricted_xslt_transform(stylesheet, input, resources, **options)
+
+    Convenience shortcut for a single restricted transformation::
+
+        result = etree.restricted_xslt_transform(
+            stylesheet, xml_input, {'inc.xsl': b'...'},
+        )
+
+    See `RestrictedXSLT` for the meaning of the arguments.
+    """
+    transform = RestrictedXSLT(
+        stylesheet, resources, base_url=base_url,
+        input_base_url=input_base_url, access_control=access_control)
+    return transform(input, profile_run=profile_run, **params)
 
 
 @cython.final

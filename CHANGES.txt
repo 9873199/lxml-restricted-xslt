@@ -10,6 +10,14 @@ Features added
 
 * ``CDATA`` objects gained a string representation.
 
+* Added ``etree.RestrictedXSLT`` (also ``etree.restricted_xslt_transform()``
+  and ``lxml.restricted``) for transforming untrusted stylesheets against a
+  caller supplied, read-only set of in-memory resources.  ``xsl:include``,
+  ``xsl:import``, ``document()`` and external entities in the input XML are
+  all confined to that resource set, and misses are rejected instead of falling
+  back to the default file and network loaders.  Python extension functions
+  and process-wide parser settings are not used.
+
 Bugs fixed
 ----------
 

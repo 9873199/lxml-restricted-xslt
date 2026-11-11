@@ -7,6 +7,7 @@ Document loading and URL resolving
    2  URI Resolvers
    3  Document loading in context
    4  I/O access control in XSLT
+   5  Restricted XSLT transformations
 
 
 The normal way to load external entities (such as DTDs) is by using
@@ -281,3 +282,61 @@ There are a few things to keep in mind:
 * If you need more fine-grained control than switching access on and off, you
   should consider writing a custom document loader that returns empty
   documents or raises exceptions if access is denied.
+
+
+Restricted XSLT transformations
+-------------------------------
+
+For untrusted stylesheets that must still be able to include/import other
+stylesheets or load XML via ``document()``, lxml provides the
+``RestrictedXSLT`` entry point.  It serves the stylesheet and a caller supplied
+set of read-only resources entirely from memory:
+
+.. sourcecode:: python
+
+    from lxml import etree
+
+    resources = {
+        'parts/common.xsl': b'''\
+    <xsl:stylesheet version="1.0"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <xsl:template name="header"><h1>Header</h1></xsl:template>
+    </xsl:stylesheet>''',
+        'data.xml': b'<data>some text</data>',
+    }
+
+    stylesheet = b'''\
+    <xsl:stylesheet version="1.0"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <xsl:import href="parts/common.xsl"/>
+      <xsl:template match="/">
+        <out>
+          <xsl:call-template name="header"/>
+          <xsl:copy-of select="document('data.xml')/*"/>
+        </out>
+      </xsl:template>
+    </xsl:stylesheet>'''
+
+    transform = etree.RestrictedXSLT(stylesheet, resources)
+    result = transform(b'<input/>')
+
+The same resource map is used for ``xsl:include``/``xsl:import`` while the
+stylesheet is compiled, for ``document()`` while it is applied, and for
+external entities in the XML input.  Resources may reference each other with
+relative paths.  All names are resolved inside a private virtual root.
+
+Anything else is rejected with a ``RestrictedResourceError`` and is never
+passed on to the default libxml2/libxslt loaders.  This includes missing
+resources, ``file:`` URIs, UNC and Windows paths, percent-encoded names, and
+``xml:base`` rewrites that leave the resource set.  The transformation neither
+exposes process-wide Python extension functions nor enables Python-backed
+EXSLT regular expressions.  ``XSLTAccessControl`` is used to deny writes, and
+the input XML is parsed with the same restricted resolver.
+
+Stylesheet and input may be bytes, text, an Element/ElementTree, a file-like
+object or an explicitly authorized ``os.PathLike``.  The latter is read once
+outside of the transformation itself.  ``base_url`` and ``input_base_url``
+name the logical stylesheet and input documents inside the resource root.  A
+one-shot helper is available as
+``etree.restricted_xslt_transform(stylesheet, input, resources)``, and the API
+is also importable from ``lxml.restricted``.

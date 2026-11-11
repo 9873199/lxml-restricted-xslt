@@ -27,7 +27,8 @@ __all__ = [
     'ParserBasedElementClassLookup', 'ParserError', 'ProcessingInstruction',
     'PyErrorLog', 'PythonElementClassLookup', 'QName', 'RelaxNG',
     'RelaxNGError', 'RelaxNGErrorTypes', 'RelaxNGParseError',
-    'RelaxNGValidateError', 'Resolver', 'Schematron', 'SchematronError',
+    'RelaxNGValidateError', 'Resolver', 'RestrictedResourceError',
+    'RestrictedXSLT', 'RestrictedXSLTError', 'Schematron', 'SchematronError',
     'SchematronParseError', 'SchematronValidateError', 'SerialisationError',
     'SubElement', 'TreeBuilder', 'XInclude', 'XIncludeError', 'XML',
     'XMLDTDID', 'XMLID', 'XMLParser', 'XMLSchema', 'XMLSchemaError',
@@ -40,7 +41,7 @@ __all__ = [
     'cleanup_namespaces', 'clear_error_log', 'dump',
     'fromstring', 'fromstringlist', 'get_default_parser', 'iselement',
     'iterparse', 'iterwalk', 'parse', 'parseid', 'register_namespace',
-    'set_default_parser', 'set_element_class_lookup', 'strip_attributes',
+    'restricted_xslt_transform', 'set_default_parser', 'set_element_class_lookup', 'strip_attributes',
     'strip_elements', 'strip_tags', 'tostring', 'tostringlist', 'tounicode',
     'use_global_python_log'
     ]
